@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheryl K. Goodman - AI Strategist & Communications Leader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafaf9;
+            --text: #1a1a1a;
+            --text-muted: #666;
+            --accent: #2c3e50;
+            --accent-light: #34495e;
+            --border: #e0e0e0;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Clean, classic design - no custom cursor */
+
+        /* Clean background */
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 250, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideDown 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+            display: inline-block;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+        }
+
+        /* Stats */
+        .stats {
+            padding: 6rem 5%;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 4rem;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            padding-left: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border: 3px solid var(--bg);
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-role {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Expertise Cards */
+        .expertise {
+            padding: 8rem 5%;
+        }
+
+        .expertise-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .expertise-card {
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .expertise-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .expertise-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .expertise-icon {
+            display: none;
+        }
+
+        .expertise-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Featured Work */
+        .featured {
+            padding: 8rem 5%;
+        }
+
+        .featured:first-of-type {
+            background: var(--card-bg);
+        }
+
+        .featured-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .featured-item {
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .featured-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .featured-item:hover {
+            border-color: var(--accent);
+        }
+
+        .featured-image {
+            display: none;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-tag {
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .featured-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 8rem 5%;
+            background: var(--card-bg);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 7px;
+            }
+
+            .timeline-item {
+                padding-left: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">CKG</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                AI Doesn't Need Better Code.<br>
+                <span class="highlight">It Needs a Better Story.</span>
+            </h1>
+            <p class="subtitle">
+                My mission is simple: to make innovation trustworthy, human-centered, and scalable at the Speed of Trust via Strategy, ROI and Story. My superpower? Recognizing trends before they're called trends—from robotics and autonomous systems to AI governance—positioning organizations ahead of the curve, not behind it.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                <a href="#experience" class="btn">View Experience</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item scroll-fade">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Years AI Leadership in Robotics & Autonomous Driving</div>
+            </div>
+            <div class="stat-item scroll-fade">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Years Leading Innovation Narratives</div>
+            </div>
+            <div class="stat-item scroll-fade">
+                <div class="stat-number">18%</div>
+                <div class="stat-label">Brand Ranking Lift at Sony</div>
+            </div>
+            <div class="stat-item scroll-fade">
+                <div class="stat-number">10X</div>
+                <div class="stat-label">Revenue Growth at Athena</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <h2 class="section-title scroll-fade">Career Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item scroll-fade">
+                <div class="timeline-year">2022 - PRESENT</div>
+                <div class="timeline-company">FindGood.Tech</div>
+                <div class="timeline-role">CEO & Founder</div>
+                <div class="timeline-description">
+                    Three years of publishing, producing, and pitching the value of AI. Built AI literacy framework adopted by universities and corporate training programs. Advise enterprise leaders on responsible AI integration, ethics, and workforce readiness. Secured founding commitments from 10 family offices ($100M+ AUM) for Alliance for Societal Impact. Strategic AI advisory for Ancestry.com (150M+ users), ResMed (NYSE: RMD), and emerging ventures. Raised investor funds, maintained data rooms, and supported founders through board leadership at Startup San Diego—transforming the nonprofit into profitable entity with best-in-class AI programming (2022-2025).
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-fade">
+                <div class="timeline-year">2017 - 2022</div>
+                <div class="timeline-company">Sony Electronics</div>
+                <div class="timeline-role">Head of Corporate Communications / CSR | President's Leadership Team</div>
+                <div class="timeline-description">
+                    Managed $100M ESG portfolio and drove global relaunch of AI and robotics platforms (AIBO®, Vision S®, 360 Reality Audio™ Master Series TV). Campaigns lifted brand rankings by 18% and redefined Sony's "faded" brand perception. Led privacy & trust framework development for consumer AI, educating media on AI ethics before industry standards existed. Winner of awards from Wired, WSJ, AdWeek, and CTA.
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-fade">
+                <div class="timeline-year">2014 - 2017</div>
+                <div class="timeline-company">Athena</div>
+                <div class="timeline-role">Executive Director</div>
+                <div class="timeline-description">
+                    Transformed organization through strategic growth initiatives: 10X revenue increase in two years, created new technology partnerships, developed sell-out programming, and instituted entrepreneur program. Built strong brand based on actual value creation for patrons and sponsors, establishing Athena as premier platform for women in technology leadership.
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-fade">
+                <div class="timeline-year">2004 - 2013</div>
+                <div class="timeline-company">Qualcomm MEMS, Qualcomm Labs & Qualcomm Corporate</div>
+                <div class="timeline-role">Senior Director, Go-to-Market & Communications</div>
+                <div class="timeline-description">
+                    Led MEMS biomimicry display innovation campaigns (Mirasol®) and context-aware platforms with $10M+ marketing budgets. Supported across three divisions—MEMS, Labs, and Corporate—encompassing PR, AR (Analyst Relations), and comprehensive go-to-market strategy. Developed publisher relations program with top 5 publishing houses. Primary communications advisor for Qualcomm Ventures portfolio companies—transformed PhD founders into confident spokespeople. Produced award-winning go-to-market strategies and secured 30+ industry awards establishing Qualcomm innovation leadership beyond core wireless business.
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-fade">
+                <div class="timeline-year">DOT-COM ERA</div>
+                <div class="timeline-company">Lindows & MP3.com</div>
+                <div class="timeline-role">Early Employee</div>
+                <div class="timeline-description">
+                    Early-stage employee at Lindows (Linux-based desktop software) and MP3.com during the dot-com era. Gained foundational experience in high-velocity startup environments, establishing expertise in emerging technology commercialization and go-to-market strategy. Classically trained as a broadcast journalist, bringing storytelling and narrative architecture skills to technology communications.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="expertise">
+        <h2 class="section-title scroll-fade">Core Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">Technology Executive Leadership</div>
+                <div class="expertise-description">
+                    Over 20 years converting emerging technologies into measurable business and social impact. Served on Sony President's leadership team managing $100M ESG portfolio. Led Fortune 50 and startup innovation narratives.
+                </div>
+            </div>
+
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">Change Management & Workforce Readiness</div>
+                <div class="expertise-description">
+                    Help organizations prepare their human workforce for AI integration. Built AI literacy framework adopted by universities and corporate training programs. Author of "How to Win Friends and Influence Robots." Host of Mind the Machine® Podcast.
+                </div>
+            </div>
+
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">Innovation Narrative Architecture</div>
+                <div class="expertise-description">
+                    Transforming brand perception through strategic positioning. Lifted Sony's brand rankings by 18% through AI and robotics relaunch campaigns. Winner of top awards from Wired, WSJ, AdWeek, and CTA.
+                </div>
+            </div>
+
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">Multi-Stakeholder Communications</div>
+                <div class="expertise-description">
+                    Expert in maintaining message integrity across technical researchers, enterprise customers, policymakers, investors, employees, and general public. Transformed PhD founders into confident spokespeople.
+                </div>
+            </div>
+
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">Strategic Advisory & ROI</div>
+                <div class="expertise-description">
+                    Guiding enterprise and emerging ventures through responsible AI integration. Portfolio includes Ancestry.com (150M+ users), ResMed (NYSE: RMD), and multiple high-growth startups. Focus on measurable business impact.
+                </div>
+            </div>
+
+            <div class="expertise-card scroll-fade">
+                <div class="expertise-title">AI Ethics & Governance</div>
+                <div class="expertise-description">
+                    Pioneered consumer AI ethics education before industry standards existed. Developed privacy and trust frameworks for Sony's AI platforms. Advisor on responsible AI development and governance strategies.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2 class="section-title scroll-fade">Global Speaking & Strategic Convening</h2>
+        <div class="featured-grid">
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">TIER 1 TECHNOLOGY CONFERENCES</div>
+                    <div class="featured-title">CES, Mobile World Congress, LA Tech Week</div>
+                    <div class="featured-description">
+                        Keynote speaker and panel moderator at the world's premier technology conferences. Led innovation narratives, corporate positioning, and policy discussions with global technology leaders, investors, and policymakers at CES (Las Vegas), Mobile World Congress (Barcelona), and LA Tech Week.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">REGIONAL LEADERSHIP</div>
+                    <div class="featured-title">San Diego Startup Week, TechCon SoCal</div>
+                    <div class="featured-description">
+                        Vice Chair, Startup San Diego. Keynote: "Roots to Global Heights: The Unicorn Journey" with GoFundMe, Flock Freight, Cloudbeds. Fireside Chat on "True Innovation" with Qualcomm Founding Chairman Irwin Jacobs. Leading Southern California's innovation ecosystem development and startup community building.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">STRATEGIC DIPLOMACY</div>
+                    <div class="featured-title">East Asia Technology Delegations</div>
+                    <div class="featured-description">
+                        Led global technology delegations to East Asia for strategic diplomacy missions, facilitating cross-border innovation partnerships, technology transfer discussions, and bilateral cooperation frameworks between U.S. and Asian technology ecosystems.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">INDUSTRY ASSOCIATIONS</div>
+                    <div class="featured-title">AMA, BIA, Family Office Forums</div>
+                    <div class="featured-description">
+                        Regular speaker at American Marketing Association (AMA), Business Intelligence Alliance (BIA), and family office investment conferences. Topics include AI governance, responsible innovation, workforce transformation, and building stakeholder trust in emerging technologies.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">INVESTOR ECOSYSTEM</div>
+                    <div class="featured-title">Female Investors Club, Alliance for Societal Impact</div>
+                    <div class="featured-description">
+                        Panel: "AI Year in Review + What's Next" with Morrison Foerster and NerdStage. Building bridges between family offices and AI research communities. Secured founding commitments from 10 family offices ($100M+ AUM) for responsible AI development initiatives.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">CORPORATE ADVISORY</div>
+                    <div class="featured-title">Executive Training & Policy Translation</div>
+                    <div class="featured-description">
+                        Designed and delivered executive communication training for Fortune 500 leaders navigating complex stakeholder environments. Translate technical AI capabilities into policy frameworks for regulators. CES on the Hill advocate and CTA standards committee member.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2 class="section-title scroll-fade">Publications & Recognition</h2>
+        <div class="featured-grid">
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">PUBLICATION</div>
+                    <div class="featured-title">How to Win Friends and Influence Robots</div>
+                    <div class="featured-description">
+                        2024 book establishing AI governance thought leadership and practical frameworks for navigating the AI age.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">PODCAST</div>
+                    <div class="featured-title">Mind the Machine® Podcast</div>
+                    <div class="featured-description">
+                        Biweekly podcast reaching 10,000+ AI decision-makers, exploring responsible AI development and governance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">TECHNOLOGY INNOVATION</div>
+                    <div class="featured-title">WSJ Innovation Award & Engadget Product of the Year</div>
+                    <div class="featured-description">
+                        Led value proposition for Qualcomm's Mirasol (reflective MEMS display), garnering multiple prestigious technology awards in 2009 and 2010 including Wall Street Journal Innovation Award and Engadget Product of the Year.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">PR EXCELLENCE</div>
+                    <div class="featured-title">PR Leader of the Year</div>
+                    <div class="featured-description">
+                        Awarded by PR News at the National Press Club in December 2010 for global campaigns on Mirasol technology at Qualcomm.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">EXECUTIVE LEADERSHIP</div>
+                    <div class="featured-title">Business Leader of the Year (2020)</div>
+                    <div class="featured-description">
+                        Named by San Diego Business Journal for leadership at Sony during the challenges of the pandemic. Additional honors: Powerful Women in Consumer Electronics (Dealerscope Magazine, 2020) for long-term contributions driving global business.
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-item scroll-fade">
+                <div class="featured-content">
+                    <div class="featured-tag">AI EDUCATION & ADVOCACY</div>
+                    <div class="featured-title">Excellence in Academic Advancement & STEM Pioneer</div>
+                    <div class="featured-description">
+                        Honored by AI2030 Think Tank for work in AI education and advocacy. Nominated for San Diego Magazine's "Celebrating Women Awards" STEM Pioneer (2024) for career-long service in tech, from dot-com era to current AI focus.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-content scroll-fade">
+            <h2>Your Technology Deserves a Story Worth Telling</h2>
+            <p>
+                If you're building AI that matters, let's talk about how to make people believe in it.
+            </p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/ckgoodman/" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="https://findgood.tech" class="contact-link" target="_blank">FindGood.Tech</a>
+                <a href="https://www.youtube.com/@MindtheMachinePodcast" class="contact-link" target="_blank">Mind the Machine®</a>
+                <a href="mailto:ckgoodman@findgood.tech" class="contact-link">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 5%; background: var(--card-bg); border-top: 1px solid var(--border);">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                La Jolla Half Marathon finisher. Windansea competitive surfer. Frequent commentator to broadcast media on the state of AI. Based in San Diego, California.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Cheryl K. Goodman. Building trust in transformative technologies.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-fade elements
+        document.querySelectorAll('.scroll-fade, .stat-item, .timeline-item, .expertise-card, .featured-item').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
